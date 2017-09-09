@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<!--  Enter description of the message format here.  -->
+<MessageFormat name='MFL' version='2.02'>
+    <StructFormat name='employee' delimOptional='y' repeat='*'>
+        <FieldFormat name='fname' type='String' delimRef='' delim='\t' delimOptional='n' codepage='UTF-8' repeat='*'/>
+        <FieldFormat name='lastname' type='String' delimRef='' delim='\t' delimOptional='n' codepage='UTF-8' repeat='*'/>
+        <FieldFormat name='age' type='String' delimRef='' delim='\n' delimOptional='n' codepage='UTF-8' repeat='*'/>
+    </StructFormat>
+</MessageFormat>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+    <con:coreEntry>
+        <con:binding type="Mixed" xsi:type="con:MixedBindingType">
+            <con:request type="Text"/>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <con:pipeline type="request" name="request-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7fc6">
+            <con:stage id="_StageId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7fc4" name="Stage1">
+                <con:context/>
+                <con:actions>
+                    <con1:nxsdTranslation>
+                        <con2:id>_ActionId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7f91</con2:id>
+                        <con1:type>Native-To-XML</con1:type>
+                        <con1:sourceExpr>
+                            <con2:xqueryText>$body</con2:xqueryText>
+                        </con1:sourceExpr>
+                        <con1:nxsd ref="SBProject/Resources/nxsd_schema1"/>
+                        <con1:schemaElement xmlns:fil="http://TargetNamespace.com/fileService">fil:Root-Element</con1:schemaElement>
+                        <con1:replace-body-content/>
+                    </con1:nxsdTranslation>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7fc5">
+            <con:stage id="_StageId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7fc3" name="Stage1">
+                <con:context/>
+                <con:actions>
+                    <con1:nxsdTranslation>
+                        <con2:id>_ActionId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7f5e</con2:id>
+                        <con1:type>Native-To-XML</con1:type>
+                        <con1:sourceExpr>
+                            <con2:xqueryText>$body</con2:xqueryText>
+                        </con1:sourceExpr>
+                        <con1:nxsd ref="SBProject/Resources/nxsd_schema1"/>
+                        <con1:schemaElement xmlns:fil="http://TargetNamespace.com/fileService">fil:Root-Element</con1:schemaElement>
+                        <con1:replace-body-content/>
+                    </con1:nxsdTranslation>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="PipelinePairNode1">
+                <con:request>request-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7fc6</con:request>
+                <con:response>response-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7fc5</con:response>
+            </con:pipeline-node>
+            <con:route-node name="RouteNode1" xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                <con:context/>
+                <con:actions>
+                    <con1:route>
+                        <con2:id>_ActionId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ffe</con2:id>
+                        <con1:service ref="SBProject1/BusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:outboundTransform>
+                            <con3:routing-options xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                                <con2:id>_ActionId-N3f57c7ff.N794aa053.0.15df070c420.N7ffe</con2:id>
+                            </con3:routing-options>
+                        </con1:outboundTransform>
+                        <con1:responseTransform/>
+                    </con1:route>
+                </con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

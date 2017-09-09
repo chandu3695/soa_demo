@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+    <con:coreEntry>
+        <con:binding type="Mixed" xsi:type="con:MixedBindingType">
+            <con:request type="Text"/>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <con:pipeline type="request" name="request-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ffc">
+            <con:stage id="_StageId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ffa" name="Stage1">
+                <con:context/>
+                <con:actions>
+                    <con1:mflTransform>
+                        <con2:id>_ActionId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7fc7</con2:id>
+                        <con1:type>nonXML-To-XML</con1:type>
+                        <con1:sourceExpr>
+                            <con2:xqueryText>$body</con2:xqueryText>
+                        </con1:sourceExpr>
+                        <con1:mfl-resource ref="binarytofile/MFL"/>
+                        <con1:assign-variable>body</con1:assign-variable>
+                    </con1:mflTransform>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ffb">
+            <con:stage id="_StageId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ff9" name="Stage1">
+                <con:context/>
+                <con:actions/>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="PipelinePairNode1">
+                <con:request>request-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ffc</con:request>
+                <con:response>response-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ffb</con:response>
+            </con:pipeline-node>
+            <con:route-node name="RouteNode1" xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                <con:context/>
+                <con:actions>
+                    <con1:route>
+                        <con2:id>_ActionId-N3f57c7ff.N5a7a4eb0.0.15de66d9155.N7ffd</con2:id>
+                        <con1:service ref="binarytofile/BusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:outboundTransform/>
+                        <con1:responseTransform/>
+                    </con1:route>
+                </con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>
